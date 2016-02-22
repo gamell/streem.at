@@ -1,0 +1,19 @@
+{
+  "name": "streem-mobile-app",
+  "version": "1.0.0",
+  "description": "Streem Mobile Apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gamell/streem.at.git"
+  },
+  "author": "Joan Gamell (@gamell)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gamell/streem.at/issues"
+  },
+  "homepage": "https://github.com/gamell/streem.at#readme"
+}
