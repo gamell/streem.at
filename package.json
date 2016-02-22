@@ -1,0 +1,19 @@
+{
+  "name": "streem-api",
+  "version": "1.0.0",
+  "description": "Streem.at API",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gamell/streem.at.git"
+  },
+  "author": "Joan Gamell (@gamell)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/gamell/streem.at/issues"
+  },
+  "homepage": "https://github.com/gamell/streem.at#readme"
+}
