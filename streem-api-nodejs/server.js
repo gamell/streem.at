@@ -1,8 +1,5 @@
 // server.js
 
-// BASE SETUP
-// =============================================================================
-
 // call the packages we need
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
@@ -27,8 +24,8 @@ router.get('/', function(req, res) {
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
-app.use('/api', router);
+// all of our routes will be prefixed with /v1
+app.use('/v1', router);
 
 // START THE SERVER
 // =============================================================================
