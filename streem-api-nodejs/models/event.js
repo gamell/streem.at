@@ -11,4 +11,4 @@ var eventSchema = new Schema({
   commentsOn: Boolean
 });
 
-module.exports = mongoose.model('Movie', eventSchema);
+module.exports = mongoose.model('Event', eventSchema);
