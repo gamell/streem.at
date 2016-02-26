@@ -6,12 +6,10 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
 // mount all the routes
-app.use(require('./routes'));
-
-// Models
-var Event = require('./models/event');
+app.use('/v1', require('./routes'));
 
 //connect to DB
+// TODO: Switch by environment
 var mongoose   = require('mongoose');
 mongoose.connect('localhost:27017/streemat'); // connect to our database
 //mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database

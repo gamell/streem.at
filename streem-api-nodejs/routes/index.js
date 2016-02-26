@@ -1,5 +1,4 @@
 var express = require('express'),
-    app = express(),
     router = express.Router();
 
 // middleware to use for all requests
@@ -16,19 +15,4 @@ router.get('/', function(req, res) {
 
 router.use('/events', require('./events'));
 
-// REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /v1
-// NOT WORKING
-app.use('/v1', router);
-
 module.exports = router;
-
-
-// TODO:
-/*
-
-- Fix routes
-- NPM script by environment
-- install supervisor locally and include in package.json / npm START
-
-*/

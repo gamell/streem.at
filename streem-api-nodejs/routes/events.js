@@ -1,7 +1,10 @@
 var express = require('express'),
     router = express.Router();
 
-router.route('/events')
+// Models
+var Event = require('../models/event');
+
+router.route('/')
 
     .post(function(req, res){
         var event = new Event();
@@ -25,7 +28,7 @@ router.route('/events')
         });
     });
 
-router.route('/events/:eventId')
+router.route('/:eventId')
 
         // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
         .get(function(req, res) {
