@@ -1,13 +1,18 @@
-var express = require('express'),
+'use strict';
+
+let express = require('express'),
+    picService = require('../services/picService'),
     router = express.Router();
 
 // Models
-var Event = require('../models/event');
+let Event = require('../models/event');
+
+// All routes will be mounted under /events/
 
 router.route('/')
 
     .post(function(req, res){
-        var event = new Event();
+        let event = new Event();
         event.name = req.body.name;
 
         event.save(function(err){
@@ -18,7 +23,6 @@ router.route('/')
         });
     })
 
-    // get all the events (accessed at GET http://localhost:8080/api/bears)
     .get(function(req, res) {
         Event.find(function(err, events) {
             if (err)
@@ -29,9 +33,15 @@ router.route('/')
     });
 
 router.route('/:eventId')
-
-        // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
         .get(function(req, res) {
+            Event.findById(req.params.eventId, function(err, event) {
+                if (err)
+                    res.send(err);
+                res.json(event);
+            });
+        })
+        // upload picture
+        .post(function(req, res) {
             Event.findById(req.params.eventId, function(err, event) {
                 if (err)
                     res.send(err);

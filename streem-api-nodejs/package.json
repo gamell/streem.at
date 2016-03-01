@@ -9,7 +9,7 @@
   "scripts": {
     "test": "test",
     "start-dev": "supervisor server.js",
-    "start": "forever server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,11 @@
   "dependencies": {
     "body-parser": "1.15.0",
     "express": "4.13.4",
-    "forever": "0.15.1",
+    "formidable": "1.0.17",
+    "fs-extra": "0.26.5",
     "mongoose": "4.4.4",
-    "node-supervisor": "1.0.2"
+    "node-supervisor": "1.0.2",
+    "quickthumb": "0.0.12",
+    "throng": "2.0.1"
   }
 }

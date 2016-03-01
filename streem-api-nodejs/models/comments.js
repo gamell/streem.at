@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var eventSchema = new Schema({
-  fileName: String,
-  eventId: String,
+  userId: String,
+  content: String,
 });
 
-module.exports = mongoose.model('Picture', eventSchema);
+module.exports = mongoose.model('Comment', eventSchema);
