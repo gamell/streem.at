@@ -1,13 +1,15 @@
 'use strict';
 
+// All routes will be mounted under /events/
+
 let express = require('express'),
-    picService = require('../services/picService'),
     router = express.Router();
 
 // Models
 let Event = require('../models/event');
 
-// All routes will be mounted under /events/
+// we nest the pictures routes as middleware all pictures routes will be under /events/:eventId/p/
+router.use('/:eventId/p', require('./pictures'));
 
 router.route('/')
 
@@ -40,7 +42,7 @@ router.route('/:eventId')
                 res.json(event);
             });
         })
-        // upload picture
+        // upload pictures
         .post(function(req, res) {
             Event.findById(req.params.eventId, function(err, event) {
                 if (err)

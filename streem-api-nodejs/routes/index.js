@@ -13,6 +13,6 @@ router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api! 2222' });
 });
 
-router.use('/events', require('./events'));
+router.use('/events', require('events'));
 
 module.exports = router;

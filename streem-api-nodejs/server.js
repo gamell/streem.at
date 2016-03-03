@@ -4,7 +4,7 @@ var throng = require('throng');
 
 // CONST
 
-const WORKERS = process.env.WEB_CONCURRENCY || 2;
+const WORKERS = process.env.WEB_CONCURRENCY || 1;
 const PORT = process.env.PORT || 8080;
 
 // Concurrency config
@@ -26,6 +26,9 @@ function start(){
     // mount all the routes
     app.use('/v1', require('./routes'));
 
+    // expose uploaded pictures
+    app.use('/event-pictures', express.static(__dirname + '/uploads/event-pictures/original'));
+
     //connect to DB
     // TODO: Switch by environment
     var mongoose   = require('mongoose');
@@ -42,5 +45,5 @@ function start(){
     // =============================================================================
     app.listen(PORT);
     console.log('Magic happens on port ' + PORT);
-    
+
 }
