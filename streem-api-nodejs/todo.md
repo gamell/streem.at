@@ -1,15 +1,11 @@
-#General
-
+- Investigate Heroku Mongodb
 - CRUD Events
--
-
-#Pictures
-
-- Save link in DB
-- Generate thumbnails
-- Picture comments
-
-#Authentication
-
-- Auth (Passport)
-- Tokens
+- Unit testing
+- Pictures:
+    - Save link in DB
+    - Generate thumbnails
+    - Picture comments
+- Authentication
+    - Tokens
+    -
+- `npm run publish-test` to run tests, documentaiton and publish to test

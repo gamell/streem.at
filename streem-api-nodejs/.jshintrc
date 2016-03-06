@@ -1,9 +1,0 @@
-{
-    "maxerr"        : 50,
-    "bitwise"       : true,
-    "camelcase"     : false,
-    "esversion"     : 6,
-    "devel"         : false,
-    "node"          : true,
-    "globals"       : {}
-}

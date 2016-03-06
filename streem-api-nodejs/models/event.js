@@ -5,7 +5,7 @@ var eventSchema = new Schema({
   name: String,
   permissions: String, // private / public / etc
   location: String,
-  organizer: String,
+  owner: String,
   additionalAdmins: String,
   streamingOn: Boolean,
   commentsOn: Boolean

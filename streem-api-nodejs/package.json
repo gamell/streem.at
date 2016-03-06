@@ -9,7 +9,8 @@
   "scripts": {
     "test": "test",
     "start-dev": "supervisor server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "doc": "apidoc -i ./routes"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/gamell/streem.at#readme",
   "dependencies": {
+    "apidoc": "0.15.1",
     "body-parser": "1.15.0",
     "express": "4.13.4",
     "mongoose": "4.4.4",
@@ -29,5 +31,29 @@
     "node-supervisor": "1.0.2",
     "quickthumb": "0.0.12",
     "throng": "2.0.1"
+  },
+  "apidoc": {
+    "name": "Streem.at API",
+    "version": "0.0.1",
+    "description": "API to interact with the Streem.at backend from front end and mobile app clients",
+    "apidoc": {
+      "title": "Streem API",
+      "url": "https://streem.at/v1"
+    }
+  },
+  "eslintConfig": {
+      "extends": "airbnb",
+      "env": {
+          "node": true,
+          "es6": true
+      },
+      "rules": {
+        "no-console": 0
+      }
+  },
+  "devDependencies": {
+    "eslint": "2.3.0",
+    "eslint-config-airbnb": "6.0.2",
+    "eslint-plugin-react": "4.2.0"
   }
 }
