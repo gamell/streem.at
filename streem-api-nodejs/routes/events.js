@@ -1,6 +1,9 @@
+'use strict';
+
 // All routes will be mounted under /events/
 
 const express = require('express');
+const eventUtils = require('../services/event-utils');
 const router = new express.Router();
 
 // Models
@@ -8,6 +11,7 @@ const Event = require('../models/event');
 
 // we nest the pictures routes as middleware all pictures routes will be under /events/:eventId/p/
 router.use('/:eventName/p', require('./pictures'));
+
 
 /**
 * @api {post} /events Creates a new event
@@ -26,14 +30,18 @@ router.use('/:eventName/p', require('./pictures'));
 */
 
 router.route('/').post((req, res) => {
+  console.log(req.body);
   const event = new Event();
-  event.name = req.body.name;
+  event.readableName = req.body.name;
+  event.name = eventUtils.getEventName(event.readableName);
 
   event.save((err) => {
     if (err) {
       res.send(err);
     }
-    res.json({ message: 'Event created!' });
+    res.json({
+      event,
+    });
   });
 });
 
@@ -84,7 +92,7 @@ router.route('/').get((req, res) => {
 * }
 */
 
-router.route('/:eventName').get(function(req, res) {
+router.route('/:eventId').get(function(req, res) {
             Event.findById(req.params.eventId, function(err, event) {
                 if (err)
                     res.send(err);

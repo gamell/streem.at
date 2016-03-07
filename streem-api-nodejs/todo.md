@@ -1,5 +1,7 @@
 - Investigate Heroku Mongodb
 - CRUD Events
+- Improve Schemas (put limits, etc)
+- Sanitize user input for API (e.g. event names should not be a space, the same user should NOT have events with the same names)
 - Unit testing
 - Pictures:
     - Save link in DB
@@ -7,5 +9,4 @@
     - Picture comments
 - Authentication
     - Tokens
-    -
 - `npm run publish-test` to run tests, documentaiton and publish to test

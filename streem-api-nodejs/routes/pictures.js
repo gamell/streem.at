@@ -1,3 +1,5 @@
+'use strict';
+
 // All pictures routes will be under /events/:eventId/p/
 
 const express = require('express');
@@ -14,7 +16,7 @@ const storage = multer.diskStorage({
     cb(null, './uploads/event-pictures/original/');
   },
   filename(req, file, cb) {
-    cb(null, '${file.fieldname} - ${Date.now()}');
+    cb(null, `${file.fieldname} - ${Date.now()}`);
   },
 });
 

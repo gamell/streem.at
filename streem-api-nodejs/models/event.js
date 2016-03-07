@@ -1,14 +1,15 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var eventSchema = new Schema({
+const eventSchema = new Schema({
+  readableName: String,
   name: String,
   permissions: String, // private / public / etc
   location: String,
   owner: String,
   additionalAdmins: String,
   streamingOn: Boolean,
-  commentsOn: Boolean
+  commentsOn: Boolean,
 });
 
 module.exports = mongoose.model('Event', eventSchema);
