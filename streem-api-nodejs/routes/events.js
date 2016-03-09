@@ -30,18 +30,14 @@ router.use('/:eventName/p', require('./pictures'));
 */
 
 router.route('/').post((req, res) => {
-  console.log(req.body);
   const event = new Event();
   event.readableName = req.body.name;
   event.name = eventUtils.getEventName(event.readableName);
-
   event.save((err) => {
     if (err) {
       res.send(err);
     }
-    res.json({
-      event,
-    });
+    res.json({ event });
   });
 });
 
@@ -92,20 +88,40 @@ router.route('/').get((req, res) => {
 * }
 */
 
-router.route('/:eventId').get(function(req, res) {
-            Event.findById(req.params.eventId, function(err, event) {
-                if (err)
-                    res.send(err);
-                res.json(event);
-            });
-        });
+router.route('/:eventId').get((req, res) => {
+  Event.findById(req.params.eventId, (err, event) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(event);
+  });
+});
 
-router.route('/:eventName').post(function(req, res) {
-    Event.findById(req.params.eventId, function(err, event) {
-        if (err)
-            res.send(err);
-        res.json(event);
-    });
+/**
+* @api {put} /events/:eventId Edits the information of an event
+* @apiName editEvent
+* @apiGroup Events
+*
+* @apiParam {String} eventId Event Id
+* @apiParam {String} [location] Optional Event location
+* @apiParam {String} [permissions] Optional Event permissions
+*
+* @apiSuccess {Object} event Object containing the information of the event
+* @apiSuccessExample Example data on success:
+* {
+*  "eventId": "wedding-joan-kristin",
+*  "name": "Wedding Joan & Kristin",
+*  "location": "1.34355,0.32763"
+* }
+*/
+
+router.route('/:eventName').put((req, res) => {
+  Event.findById(req.params.eventId, (err, event) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(event);
+  });
 });
 
 module.exports = router;

@@ -1,8 +1,9 @@
+- skeleton of all API following good practices
 - Investigate Heroku Mongodb
-- CRUD Events
 - Improve Schemas (put limits, etc)
-- Sanitize user input for API (e.g. event names should not be a space, the same user should NOT have events with the same names)
-- Unit testing
+- Sanitize user input for API
+- Unit testing (mocha)
+- Feature testing with night owl
 - Pictures:
     - Save link in DB
     - Generate thumbnails
