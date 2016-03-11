@@ -30,6 +30,7 @@ router.use('/:eventName/p', require('./pictures'));
 */
 
 router.route('/').post((req, res) => {
+  // TODO: detect that for the same user there is no event with the same name
   const event = new Event();
   event.readableName = req.body.name;
   event.name = eventUtils.getEventName(event.readableName);

@@ -22,5 +22,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/events', require('./events'));
+router.use('/users', require('./users'));
 
 module.exports = router;
