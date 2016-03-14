@@ -5,6 +5,7 @@
 const express = require('express');
 const eventUtils = require('../services/event-utils');
 const router = new express.Router();
+const validator = require('validator');
 
 // Models
 const User = require('../models/user');
@@ -18,10 +19,11 @@ const User = require('../models/user');
 * @apiParam {String} email Email
 * @apiParam {String} password User password
 *
-* @apiSuccess {String} name The eventId
+* @apiSuccess {Object} user The user object
 * @apiSuccessExample Example data on success:
 * {
-*  "eventId": "wedding-joan-kristin"
+*  "username": "gamell"
+*  "email": "gamell@gmail.com"
 * }
 */
 
@@ -36,6 +38,10 @@ router.route('/').post((req, res) => {
   //   }
   //   res.json({ event });
   // });
+  const user = new User();
+  //if(validator.isEmail(req.body.email) && validator.isAscii(req.body.username));
+  user.uername = req.body.username;
+
 });
 
 module.exports = router;

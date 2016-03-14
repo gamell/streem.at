@@ -22,7 +22,7 @@ router.use('/:eventName/p', require('./pictures'));
 * @apiParam {String} [location] Optional Event location
 * @apiParam {String} [permissions] Optional Event permissions
 *
-* @apiSuccess {String} name The eventId
+* @apiSuccess {Object} the event
 * @apiSuccessExample Example data on success:
 * {
 *  "eventId": "wedding-joan-kristin"
