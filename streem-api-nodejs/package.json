@@ -26,12 +26,14 @@
     "apidoc": "0.15.1",
     "body-parser": "1.15.0",
     "express": "4.13.4",
+    "express-validator": "2.20.2",
     "mongoose": "4.4.4",
     "multer": "1.1.0",
     "node-supervisor": "1.0.2",
     "quickthumb": "0.0.12",
     "supervisor": "0.9.1",
     "throng": "2.0.1",
+    "validator": "5.1.0"
   },
   "apidoc": {
     "name": "Streem.at API",
