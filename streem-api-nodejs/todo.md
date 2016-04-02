@@ -1,5 +1,8 @@
+- SQLize (Postgress)
+- - Do stuff the Express 4 way
+- Osprey for API design
+  - Change documentation engine to RAML to HTML https://github.com/raml2html/raml2html
 - skeleton of all API following good practices
-- Investigate Heroku Mongodb
 - Improve Schemas (put limits, etc)
 - Sanitize user input for API
 - Unit testing (mocha)

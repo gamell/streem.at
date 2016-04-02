@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "5.6.0"
+    "node": ">=5.7.1"
   },
   "name": "streem-api",
   "version": "1.0.0",
@@ -8,8 +8,8 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "start-dev": "supervisor server.js",
-    "start": "node server.js",
+    "start-dev": "supervisor ./bin/www",
+    "start": "node ./bin/www",
     "doc": "apidoc -i ./routes"
   },
   "repository": {
@@ -25,12 +25,17 @@
   "dependencies": {
     "apidoc": "0.15.1",
     "body-parser": "1.15.0",
+    "debug": "2.2.0",
     "express": "4.13.4",
     "express-validator": "2.20.2",
     "mongoose": "4.4.4",
     "multer": "1.1.0",
     "node-supervisor": "1.0.2",
+    "osprey": "0.3.1",
+    "pg": "4.5.1",
+    "pg-hstore": "2.3.2",
     "quickthumb": "0.0.12",
+    "sequelize": "3.20.0",
     "supervisor": "0.9.1",
     "throng": "2.0.1",
     "validator": "5.1.0"
@@ -58,6 +63,7 @@
   "devDependencies": {
     "eslint": "2.3.0",
     "eslint-config-airbnb": "6.0.2",
-    "eslint-plugin-react": "4.2.0"
+    "eslint-plugin-react": "4.2.0",
+    "sequelize-cli": "2.3.1"
   }
 }

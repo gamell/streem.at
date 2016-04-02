@@ -1,15 +1,14 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+module.exports = (sequelize, DataTypes) => {
+  const Event = sequelize.define('Event', {
+    readableName: DataTypes.STRING,
+    name: DataTypes.STRING,
+    permissions: DataTypes.STRING, // private / public / etc
+    location: DataTypes.STRING,
+    owner: DataTypes.STRING,
+    additionalAdmins: DataTypes.STRING,
+    streamingOn: DataTypes.BOOLEAN,
+    commentsOn: DataTypes.BOOLEAN,
+  });
 
-const eventSchema = new Schema({
-  readableName: String,
-  name: String,
-  permissions: String, // private / public / etc
-  location: String,
-  owner: String,
-  additionalAdmins: String,
-  streamingOn: Boolean,
-  commentsOn: Boolean,
-});
-
-module.exports = mongoose.model('Event', eventSchema);
+  return Event;
+};
