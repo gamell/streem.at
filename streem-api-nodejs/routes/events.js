@@ -3,7 +3,6 @@
 // All routes will be mounted under /events/
 
 const express = require('express');
-const eventUtils = require('../services/event-utils');
 const router = new express.Router();
 
 // Models
@@ -32,7 +31,6 @@ router.use('/:eventName/p', require('./pictures'));
 router.route('/').post((req, res) => {
   // TODO: detect that for the same user there is no event with the same name
   const event = req.body;
-  Object.assign(event, { urlName: req.body.name });
   Event.create(event).then(ev => {
     res.json(ev);
   }).catch(e => res.send(e));

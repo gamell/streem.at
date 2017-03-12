@@ -22,11 +22,12 @@ module.exports = (sequelize, DataTypes) =>
     commentsOn: DataTypes.BOOLEAN,
   }, {
     setterMethods: {
-      urlName: function (name) {
-        return this.setDataValue(
+      name: function setName(name) {
+        this.setDataValue(
           'urlName',
           encodeURIComponent(name.toLowerCase().replace(/\s/gi, '-'))
         );
+        this.setDataValue('name', name);
       },
     },
   });
