@@ -1,14 +1,32 @@
-module.exports = (sequelize, DataTypes) => {
-  const Event = sequelize.define('Event', {
-    readableName: DataTypes.STRING,
-    name: DataTypes.STRING,
-    permissions: DataTypes.STRING, // private / public / etc
+module.exports = (sequelize, DataTypes) =>
+  sequelize.define('Event', {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    urlName: {
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    permissions: {
+      type: DataTypes.ENUM,
+      validate: {
+        isIn: [['private', 'public']],
+      },
+      values: ['private', 'public'],
+    },
     location: DataTypes.STRING,
     owner: DataTypes.STRING,
     additionalAdmins: DataTypes.STRING,
     streamingOn: DataTypes.BOOLEAN,
     commentsOn: DataTypes.BOOLEAN,
+  }, {
+    setterMethods: {
+      urlName: function (name) {
+        return this.setDataValue(
+          'urlName',
+          encodeURIComponent(name.toLowerCase().replace(/\s/gi, '-'))
+        );
+      },
+    },
   });
-
-  return Event;
-};

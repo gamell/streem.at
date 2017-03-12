@@ -7,7 +7,7 @@ const eventUtils = require('../services/event-utils');
 const router = new express.Router();
 
 // Models
-const Event = require('../models/event');
+const Event = require('../models').Event;
 
 // we nest the pictures routes as middleware all pictures routes will be under /events/:eventId/p/
 router.use('/:eventName/p', require('./pictures'));
@@ -18,7 +18,7 @@ router.use('/:eventName/p', require('./pictures'));
 * @apiName createEvent
 * @apiGroup Events
 *
-* @apiParam {String} eventName Desired Event name
+* @apiParam {String} name Desired Event name
 * @apiParam {String} [location] Optional Event location
 * @apiParam {String} [permissions] Optional Event permissions
 *
@@ -31,15 +31,11 @@ router.use('/:eventName/p', require('./pictures'));
 
 router.route('/').post((req, res) => {
   // TODO: detect that for the same user there is no event with the same name
-  const event = new Event();
-  event.readableName = req.body.name;
-  event.name = eventUtils.getEventName(event.readableName);
-  event.save((err) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json({ event });
-  });
+  const event = req.body;
+  Object.assign(event, { urlName: req.body.name });
+  Event.create(event).then(ev => {
+    res.json(ev);
+  }).catch(e => res.send(e));
 });
 
 /**
@@ -65,12 +61,9 @@ router.route('/').post((req, res) => {
 */
 
 router.route('/').get((req, res) => {
-  Event.find().then((err, events) => {
-    if (err) {
-      res.send(err);
-    }
+  Event.findAll().then(events => {
     res.json(events);
-  });
+  }).catch(e => res.send(e));
 });
 
 /**
@@ -89,13 +82,10 @@ router.route('/').get((req, res) => {
 * }
 */
 
-router.route('/:eventId').get((req, res) => {
-  Event.findById(req.params.eventId, (err, event) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(event);
-  });
+router.route('/:name').get((req, res) => {
+  Event.findOne({
+    where: { urlName: req.params.name },
+  }).then(ev => res.json(ev)).catch(e => res.send(e));
 });
 
 /**
