@@ -1,17 +1,40 @@
 (ns api.server
   (:gen-class) ; for -main method in uberjar
-  (:require [io.pedestal.http :as server]
+  (:require [clojure.edn :as edn]
+            [clojure.java.io :as io]
+            [io.pedestal.http :as server]
             [io.pedestal.http.route :as route]
             [com.walmartlabs.lacinia.pedestal :as lacinia]
-            [com.walmartlabs.lacinia.schema :as schema]))
+            [com.walmartlabs.lacinia.schema :as schema]
+            [com.walmartlabs.lacinia.util :as util]))
 
-(def hello-schema (schema/compile
-                    {:queries {:hello
-                                ;; String is quoted her,e in EDN files it's not required
-                                {:type 'String
-                                 :resolve (constantly "world")}}}))
+(defn ^:private resolve-hello
+  [context args value]
+  "Hello, Clojurians!")
 
-(def service (lacinia/pedestal-service hello-schema {:graphiql true}))
+(def hello-schema
+  (schema/compile
+    {:queries
+      {:hello
+        {:type 'String
+         :resolve resolve-hello}}}))
+
+
+; (defn ^:private hello-schema
+;   (-> "resources/hello-world-schema.edn"
+;       io/resource
+;       slurp
+;       edn/read-string
+;       (util/attach-resolvers {:resolve-hello resolve-hello})
+;       schema/compile))
+
+(def ^:private hello-schema-two
+  (schema/compile
+    (util/attach-resolvers
+      (edn/read-string (slurp (io/resource "hello-world-schema.edn")))
+      {:resolve-hello resolve-hello})))
+
+(def service (lacinia/pedestal-service hello-schema-two {:graphiql true}))
 
 ;; This is an adapted service map, that can be started and stopped
 ;; From the REPL you can call server/start and server/stop on this service
@@ -60,4 +83,3 @@
 ;;  [_]
 ;;  (server/servlet-destroy @servlet)
 ;;  (reset! servlet nil))
-
