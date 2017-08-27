@@ -16,7 +16,8 @@
                  [org.slf4j/jul-to-slf4j "1.7.22"]
                  [org.slf4j/jcl-over-slf4j "1.7.22"]
                  [org.slf4j/log4j-over-slf4j "1.7.22"]
-                 [com.walmartlabs/lacinia-pedestal "0.2.0"]]
+                 [com.walmartlabs/lacinia-pedestal "0.2.0"]
+                 [korma "0.4.3"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
   ;; If you use HTTP/2 or ALPN, use the java-agent to pull in the correct alpn-boot dependency
@@ -25,4 +26,3 @@
                    :dependencies [[io.pedestal/pedestal.service-tools "0.5.2"]]}
              :uberjar {:aot [api.server]}}
   :main ^{:skip-aot true} api.server)
-
